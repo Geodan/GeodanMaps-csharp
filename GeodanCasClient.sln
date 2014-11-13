@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeodanCasClient", "GeodanCasClient\GeodanCasClient.csproj", "{D2A418F6-ACE9-4237-A19D-6DFC29CFF47F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeodanCasClient", "src\GeodanCasClient\GeodanCasClient.csproj", "{D2A418F6-ACE9-4237-A19D-6DFC29CFF47F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
