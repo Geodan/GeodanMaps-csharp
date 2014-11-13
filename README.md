@@ -4,6 +4,8 @@ CasClient
 .NET PCL to logon to GeodanMaps
 
 
+Usage
+-----
 ```
 using (var httpClient = CasClient.CreateLoggedInClient(username, password, ticketserverurl, serviceurl)
 {
