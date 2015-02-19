@@ -8,8 +8,8 @@
     <ProjectGuid>{D2A418F6-ACE9-4237-A19D-6DFC29CFF47F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeodanCasClient</RootNamespace>
-    <AssemblyName>GeodanCasClient</AssemblyName>
+    <RootNamespace>Geodan.Cloud.Client.Core</RootNamespace>
+    <AssemblyName>Geodan.Cloud.Client.Core</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -38,7 +38,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CasClient.cs" />
+    <Compile Include="Cas\CasHttpClient.cs" />
+    <Compile Include="Cas\ICasHttpClient.cs" />
+    <Compile Include="Exceptions\CasNotAuthenticatedException.cs" />
+    <Compile Include="Exceptions\RequestNotSupportedException.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\WhoAmI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

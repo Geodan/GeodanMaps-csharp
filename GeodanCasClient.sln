@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeodanCasClient", "src\GeodanCasClient\GeodanCasClient.csproj", "{D2A418F6-ACE9-4237-A19D-6DFC29CFF47F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geodan.Cloud.Client.Core", "src\GeodanCasClient\Geodan.Cloud.Client.Core.csproj", "{D2A418F6-ACE9-4237-A19D-6DFC29CFF47F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geodan.Cloud.Client.DocumentService", "src\Geodan.Cloud.Client.DocumentService\Geodan.Cloud.Client.DocumentService.csproj", "{973197DF-B83A-4281-B472-E08AD3E3AE6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D2A418F6-ACE9-4237-A19D-6DFC29CFF47F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2A418F6-ACE9-4237-A19D-6DFC29CFF47F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2A418F6-ACE9-4237-A19D-6DFC29CFF47F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{973197DF-B83A-4281-B472-E08AD3E3AE6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{973197DF-B83A-4281-B472-E08AD3E3AE6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{973197DF-B83A-4281-B472-E08AD3E3AE6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{973197DF-B83A-4281-B472-E08AD3E3AE6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
