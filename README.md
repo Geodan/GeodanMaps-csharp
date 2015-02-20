@@ -1,10 +1,12 @@
 CasClient
 =========
-.NET PCL for using GeodanMaps services in client software
+.NET PCL for using GeodanMaps services in client-side software
 
 Simple CAS client
 -----
 Using a CAS protected service with the use of CasClient
+
+Usage
 ```
 using (var httpClient = CasClient.CreateLoggedInClient(username, password, ticketserverurl, serviceurl)
 {
@@ -13,9 +15,30 @@ using (var httpClient = CasClient.CreateLoggedInClient(username, password, ticke
 }
 ```
 
+WhoAmI Service API
+-----
+API for retrieving user/organisation information.
+
+Usage
+```
+private _whoAmI = new Geodan.Cloud.Client.Core.WhoAmI(username, password, ticketserverurl, serviceurl);
+
+private async void GetUserInfo()
+{
+	var response = await _whoAmI.TellMe();
+	if(response.Success)
+	{
+		 var user = response.Result;
+         Console.WriteLine("ID: {0}, FirstName: {1}, LastName: {2}, Organisation: {3}, OrganisationCode: {4}, OrganisationID: {5}", user.Id, user.FirstName, user.LastName, user.Organisation, user.OrganisationCode, user.OrganisationId);
+	}	
+}
+```
+
 Document Service API
 -----
-API for creating, updating, deleting and retrieving documents and their data from the Geodan Document Services. A few examples:
+API for creating, updating, deleting and retrieving documents and their data from the Geodan Document Service.
+
+Usage examples
 ```
 private _documentService = new Geodan.Cloud.Client.DocumentService(username, password, ticketserverurl, serviceurl);
 

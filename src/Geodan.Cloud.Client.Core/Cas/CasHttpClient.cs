@@ -211,34 +211,39 @@ namespace Geodan.Cloud.Client.Core.Cas
                 throw new RequestNotSupportedException();
 
             var data = await httpTask;
-
+            
+            //If redirected and login page is found
             if (data.RequestMessage.RequestUri != null && data.RequestMessage.RequestUri.ToString().Contains(CasLoginRedirectUrl))
             {
-                var ticket = await GetServiceTicket(Username, Password, TicketServiceUrl, ServiceUrl);
-                if (string.IsNullOrEmpty(ticket))
+                //Service with ticket can only used with Get request, when not a get request login with a get
+                if (data.RequestMessage.Method != HttpMethod.Get)
                 {
-                    OnCasLoginFailed(ErrorString);
-                    return new HttpResponseMessage(HttpStatusCode.Unauthorized)
+                    var loggedIn = await LoginAsync();
+                    if (!loggedIn)
                     {
-                        Content = new StringContent(string.Format("CAS: Unable to get ticket, {0}", ErrorString))
-                    };
+                        return CreateCaseResponseError(ErrorString);
+                    }
+
+                    var httpTask2 = method(null);
+                    data = await httpTask2;
                 }
-
-                var httpTask2 = method(GetTicketString(ServiceUrl, ticket, ModAuthCas));
-                data = await httpTask2;
-
-                if (data.StatusCode == HttpStatusCode.Unauthorized)
+                else //Else request the service directly with ticket
                 {
-                    return new HttpResponseMessage(HttpStatusCode.Unauthorized)
+                    var ticket = await GetServiceTicket(Username, Password, TicketServiceUrl, ServiceUrl);
+                    if (string.IsNullOrEmpty(ticket))
                     {
-                        Content = new StringContent("CAS: Unauthorized")
-                    };
-                }
+                        OnCasLoginFailed(ErrorString);
+                        return CreateCaseResponseError(ErrorString);
+                    }
 
-                OnCasLoginSuccessful();
+                    var httpTask2 = method(GetTicketString(ServiceUrl, ticket, ModAuthCas));
+                    data = await httpTask2;
+
+                    OnCasLoginSuccessful();
+                }
             }
 
-            return data;
+            return data.StatusCode == HttpStatusCode.Unauthorized ? CreateCaseResponseError("Unauthorized") : data;
         }
 
         /// <summary>
@@ -255,6 +260,11 @@ namespace Geodan.Cloud.Client.Core.Cas
                string.Format("{0}?{1}", oldUri, ticketString);
 
             return new Uri(newUri);
+        }
+
+        private static HttpResponseMessage CreateCaseResponseError(string error)
+        {
+            return new HttpResponseMessage(HttpStatusCode.Unauthorized) { Content = new StringContent(string.Format("CAS error: {0}", error)) };
         }
 
         protected virtual void OnCasLoginSuccessful()
