@@ -2,6 +2,8 @@ CasClient
 =========
 .NET PCL for using GeodanMaps services in client-side software
 
+NuGet: https://www.nuget.org/packages/Geodan.Cloud.Client.Core/
+
 Simple CAS client
 -----
 Using a CAS protected service with the use of CasClient
