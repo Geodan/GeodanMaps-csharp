@@ -11,6 +11,12 @@ namespace Geodan.Cloud.Client.DocumentService.Models
         public string Account { get; set; }
 
         /// <summary>
+        /// Name of the account
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+        /// <summary>
         /// Name of the service
         /// </summary>
         [JsonProperty(PropertyName = "service")]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,6 @@ namespace Geodan.Cloud.Client.GeoQuester
         /// <param name="maxFeatures">Maximum of features to be returned</param>
         /// <returns></returns>
         /// <exception cref="JsonSerializationException">Thrown when response could not be parsed</exception>
-
         public async Task<Response<IsOverlapResult>> IsOverlap(string layer, string organisation, string location, double buffer = 0,
             string outputFormat = "yesno", double maxFeatures= 11)
         {
@@ -53,20 +53,22 @@ namespace Geodan.Cloud.Client.GeoQuester
         /// <summary>
         /// Get all layers for specific client
         /// </summary>
+        /// <param name="layersDocument"></param>
         /// <param name="account">Name of the account</param>
         /// <returns>List of all Layers for specified account</returns>
         /// <exception cref="JsonSerializationException">Thrown when response could not be parsed</exception>
-        public async Task<Response<List<Layer>>> GetAllLayers(string account)
-        {
-            var requestUrl = string.Format("https://acc.geodan.nl/public/document/{0}/api/{0}/geoquest/", account);
-            var response = await GetAsync(requestUrl);
+        public async Task<Response<List<Layer>>> GetAllLayers(string layersDocument, string account)
+        {            
+            var response = await GetAsync(layersDocument);
             var responseString = await response.Content.ReadAsStringAsync();
 
             Response<List<Layer>> dsResponse;
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                dsResponse = Response<List<Layer>>.CreateSuccessful(JsonConvert.DeserializeObject<List<Layer>>(responseString), response.StatusCode);
+                var layers = JsonConvert.DeserializeObject<List<Layer>>(responseString);
+                var filter = layers.Where(l => l.Account.Equals(account)).ToList();
+                dsResponse = Response<List<Layer>>.CreateSuccessful(filter, response.StatusCode);
             }
             else
             {
