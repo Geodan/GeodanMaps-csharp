@@ -2,14 +2,14 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5AA36CA5-7630-44C3-824B-CBEBCFA1C044}</ProjectGuid>
+    <ProjectGuid>{8CE78E6E-CB11-4EE3-84D4-FD9F0DE0AB04}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Geodan.Cloud.Client.GeoQuester</RootNamespace>
-    <AssemblyName>Geodan.Cloud.Client.GeoQuester</AssemblyName>
+    <RootNamespace>Geodan.Cloud.Client.WhoAmI.test</RootNamespace>
+    <AssemblyName>Geodan.Cloud.Client.WhoAmI.test</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,26 +34,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\Geodan.Cloud.Client.Core\Geodan.Cloud.Client.Core.csproj">
-      <Project>{D2A418F6-ACE9-4237-A19D-6DFC29CFF47F}</Project>
-      <Name>Geodan.Cloud.Client.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Geodan.Cloud.Client.DocumentService\Geodan.Cloud.Client.DocumentService.csproj">
-      <Project>{973197df-b83a-4281-b472-e08ad3e3ae6a}</Project>
-      <Name>Geodan.Cloud.Client.DocumentService</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="GeoQuester.cs" />
-    <Compile Include="Models\IsOverlapResult.cs" />
-    <Compile Include="Models\Layer.cs" />
+    <Compile Include="WhoAmI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll</HintPath>
+    <ProjectReference Include="..\..\src\Geodan.Cloud.Client.Core\Geodan.Cloud.Client.Core.csproj">
+      <Project>{d2a418f6-ace9-4237-a19d-6dfc29cff47f}</Project>
+      <Name>Geodan.Cloud.Client.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9B887077-4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geodan.Cloud.Client.GeoQuester.test", "test\Geodan.Cloud.Client.GeoQuester.test\Geodan.Cloud.Client.GeoQuester.test.csproj", "{D16D0C9B-D769-464F-BA52-FD17CD12A8EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geodan.Cloud.Client.WhoAmI.test", "test\Geodan.Cloud.Client.WhoAmI.test\Geodan.Cloud.Client.WhoAmI.test.csproj", "{8CE78E6E-CB11-4EE3-84D4-FD9F0DE0AB04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,11 +37,16 @@ Global
 		{D16D0C9B-D769-464F-BA52-FD17CD12A8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D16D0C9B-D769-464F-BA52-FD17CD12A8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D16D0C9B-D769-464F-BA52-FD17CD12A8EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE78E6E-CB11-4EE3-84D4-FD9F0DE0AB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE78E6E-CB11-4EE3-84D4-FD9F0DE0AB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE78E6E-CB11-4EE3-84D4-FD9F0DE0AB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE78E6E-CB11-4EE3-84D4-FD9F0DE0AB04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D16D0C9B-D769-464F-BA52-FD17CD12A8EA} = {9B887077-408B-4C36-8E44-E8C84F9CAECA}
+		{8CE78E6E-CB11-4EE3-84D4-FD9F0DE0AB04} = {9B887077-408B-4C36-8E44-E8C84F9CAECA}
 	EndGlobalSection
 EndGlobal

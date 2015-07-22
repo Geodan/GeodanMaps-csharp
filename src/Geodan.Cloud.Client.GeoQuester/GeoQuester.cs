@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -15,9 +15,11 @@ namespace Geodan.Cloud.Client.GeoQuester
     public class GeoQuester: CasHttpClient
     {
         private const string Api = "api";
+        private DocumentService.DocumentService _documentService;
 
-        public GeoQuester(string username, string password, string casTicketServiceUrl, string serviceUrl, bool modAuthCas = true) : base(username, password, casTicketServiceUrl, serviceUrl, modAuthCas)
+        public GeoQuester(string username, string password, string casTicketServiceUrl, string serviceUrl, string documentServiceUrl, bool modAuthCas = true) : base(username, password, casTicketServiceUrl, serviceUrl, modAuthCas)
         {
+            _documentService = new DocumentService.DocumentService(username, password, casTicketServiceUrl, documentServiceUrl, modAuthCas);
         }
 
         /// <summary>
@@ -53,26 +55,27 @@ namespace Geodan.Cloud.Client.GeoQuester
         /// <summary>
         /// Get all layers for specific client
         /// </summary>
-        /// <param name="layersDocument"></param>
-        /// <param name="account">Name of the account</param>
+        /// <param name="account">Account name</param>
+        /// <param name="service">Name of the account</param>
+        /// <param name="documentName">Name of the document</param>
         /// <returns>List of all Layers for specified account</returns>
         /// <exception cref="JsonSerializationException">Thrown when response could not be parsed</exception>
-        public async Task<Response<List<Layer>>> GetAllLayers(string layersDocument, string account)
-        {            
-            var response = await GetAsync(layersDocument);
-            var responseString = await response.Content.ReadAsStringAsync();
-
+        public async Task<Response<List<Layer>>> GetAllLayers(string account, string service, string documentName)
+        {
+            var response = await _documentService.GetDocumentData(account, service, documentName);
             Response<List<Layer>> dsResponse;
 
-            if (response.StatusCode == HttpStatusCode.OK)
+            if (response.Success)
             {
-                var layers = JsonConvert.DeserializeObject<List<Layer>>(responseString);
+                var reader = new StreamReader(response.Result);
+                var text = reader.ReadToEnd();
+                var layers = JsonConvert.DeserializeObject<List<Layer>>(text);
                 var filter = layers.Where(l => l.Account.Equals(account)).ToList();
-                dsResponse = Response<List<Layer>>.CreateSuccessful(filter, response.StatusCode);
+                dsResponse = Response<List<Layer>>.CreateSuccessful(filter, response.HttpStatusCode);
             }
             else
             {
-                dsResponse = Response<List<Layer>>.CreateUnsuccessful(responseString, response.StatusCode);
+                dsResponse = Response<List<Layer>>.CreateUnsuccessful(response.Error, response.HttpStatusCode);
             }
             return dsResponse;
         }
