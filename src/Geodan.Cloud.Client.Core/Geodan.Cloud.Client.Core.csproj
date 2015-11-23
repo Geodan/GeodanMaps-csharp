@@ -37,7 +37,7 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CasClient.cs" />
+    <Compile Include="Cas\SimpleCasClient.cs" />
     <Compile Include="Cas\CasHttpClient.cs" />
     <Compile Include="Cas\ICasHttpClient.cs" />
     <Compile Include="Exceptions\CasNotAuthenticatedException.cs" />

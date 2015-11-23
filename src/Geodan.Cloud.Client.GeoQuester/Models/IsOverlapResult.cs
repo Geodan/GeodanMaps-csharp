@@ -2,12 +2,9 @@
 
 namespace Geodan.Cloud.Client.GeoQuester.Models
 {
-    public class IsOverlapResult
+    public class IntersectResult
     {
-        /// <summary>
-        /// States if the feature intersects with layer shape
-        /// </summary>
-        [JsonProperty(PropertyName = "result")]
-        public bool IsOverlap { get; set; }
+        [JsonProperty(PropertyName = "datasets")]
+        public Dataset[] Datasets{ get; set; }
     }
 }

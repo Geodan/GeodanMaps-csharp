@@ -5,7 +5,7 @@ using System.Net.Http;
 
 namespace Geodan.Cloud.Client.Core
 {
-    public static class CasClient
+    public static class SimpleCasClient
     {
         public static HttpClient CreateLoggedInClient(string username, string password, string casTicketServiceUrl,
             string serviceUrl)
