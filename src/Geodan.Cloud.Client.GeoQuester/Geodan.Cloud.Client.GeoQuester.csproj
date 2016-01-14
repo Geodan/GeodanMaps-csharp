@@ -42,15 +42,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeoQuester.cs" />
+    <Compile Include="IntersectOutputProperties.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Models\Configuration.cs" />
     <Compile Include="Models\Dataset.cs" />
-    <Compile Include="Models\IsOverlapResult.cs" />
+    <Compile Include="Models\Feature.cs" />
+    <Compile Include="Models\Intersect.cs" />
+    <Compile Include="Models\IntersectFeature.cs" />
+    <Compile Include="Models\IntersectFeatureResult.cs" />
+    <Compile Include="Models\IntersectResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

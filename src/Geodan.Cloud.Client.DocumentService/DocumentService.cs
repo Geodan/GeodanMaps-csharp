@@ -174,7 +174,7 @@ namespace Geodan.Cloud.Client.DocumentService
         /// <param name="dataDocument"></param>        
         public async Task<Response<bool>> CreateOrUpdateDocument(DataDocument dataDocument)
         {
-            var requestUrl = string.Format("{0}/{1}", ServiceUrl, Api);
+            var requestUrl = string.Format("{0}/{1}", ServiceUrl, Api);            
             var response = await PutAsync(requestUrl, () => CreateJsonStringContent(dataDocument));
             var responseString = await response.Content.ReadAsStringAsync();
             var dsResponse = response.StatusCode == HttpStatusCode.Created ?
@@ -275,9 +275,10 @@ namespace Geodan.Cloud.Client.DocumentService
                Response<bool>.CreateUnsuccessful(responseString, response.StatusCode);
         }
 
-        private static StringContent CreateJsonStringContent(Object o)
+        private static StringContent CreateJsonStringContent(object o)
         {
-            return new StringContent(JsonConvert.SerializeObject(o), Encoding.UTF8, "application/json");
+            var json = JsonConvert.SerializeObject(o, new JsonSerializerSettings {NullValueHandling = NullValueHandling.Ignore});
+            return new StringContent(json, Encoding.UTF8, "application/json");
         }
 
         private static MultipartFormDataContent CreateMultipartContent(DataDocument dataDocument, MultipartFile mpf)
