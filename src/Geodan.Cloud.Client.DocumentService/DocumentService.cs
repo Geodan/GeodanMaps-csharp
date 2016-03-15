@@ -66,9 +66,9 @@ namespace Geodan.Cloud.Client.DocumentService
         /// <exception cref="JsonSerializationException">Thrown when response could not be parsed</exception>
         public async Task<Response<List<DataDocument>>> GetAllDocuments(int pageNr = 0, int pageSize = 2147483647, Sort sort = Sort.Asc, string account = null, string service = null)
         {
-            var accountSpecific = string.IsNullOrEmpty(account) ? "" : string.Format("/{0}", account);
-            var serviceSpecific = string.IsNullOrEmpty(service) ? "" : string.Format("/{0}", service);
-            var requestUrl = string.Format("{0}/{1}{2}{3}?pageNr={4}&pageSize={5}&sort={6}", ServiceUrl, Api, accountSpecific, serviceSpecific, pageNr, pageSize, sort.ToString().ToUpper());
+            var accountSpecific = string.IsNullOrEmpty(account) ? "" : $"/{account}";
+            var serviceSpecific = string.IsNullOrEmpty(service) ? "" : $"/{service}";
+            var requestUrl = $"{ServiceUrl}/{Api}{accountSpecific}{serviceSpecific}?pageNr={pageNr}&pageSize={pageSize}&sort={sort.ToString().ToUpper()}";
             var response = await GetAsync(requestUrl);
             var responseString = await response.Content.ReadAsStringAsync();
             Response<List<DataDocument>> dsResponse;
@@ -97,7 +97,7 @@ namespace Geodan.Cloud.Client.DocumentService
         /// <exception cref="JsonSerializationException">Thrown when response could not be parsed</exception>
         public async Task<Response<List<DataDocument>>> GetDocument(string account, string service, string name)
         {
-            var requestUrl = string.Format("{0}/{1}/{2}/{3}/{4}", ServiceUrl, Api, account, service, name);
+            var requestUrl = $"{ServiceUrl}/{Api}/{account}/{service}/{name}";
             var response = await GetAsync(requestUrl);
             var responseString = await response.Content.ReadAsStringAsync();
             Response<List<DataDocument>> dsResponse;
@@ -125,7 +125,7 @@ namespace Geodan.Cloud.Client.DocumentService
         /// <returns>Document data as stream</returns>        
         public async Task<Response<Stream>> GetDocumentData(string account, string service, string name)
         {
-            var requestUrl = string.Format("{0}/{1}/{2}/{3}/{4}/{5}", ServiceUrl, Api, Data, account, service, name);
+            var requestUrl = $"{ServiceUrl}/{Api}/{Data}/{account}/{service}/{name}";
             var response = await GetAsync(requestUrl);
             var stream = await response.Content.ReadAsStreamAsync();
 
@@ -160,7 +160,7 @@ namespace Geodan.Cloud.Client.DocumentService
         /// <returns>DocumentService version</returns>
         public async Task<Response<Version>> GetVersion()
         {
-            var requestUrl = string.Format("{0}/{1}/{2}", ServiceUrl, Api, Version);
+            var requestUrl = $"{ServiceUrl}/{Api}/{Version}";
             var response = await GetAsync(requestUrl);
             var responseString = await response.Content.ReadAsStringAsync();
             return response.StatusCode == HttpStatusCode.OK ?
@@ -174,7 +174,7 @@ namespace Geodan.Cloud.Client.DocumentService
         /// <param name="dataDocument"></param>        
         public async Task<Response<bool>> CreateOrUpdateDocument(DataDocument dataDocument)
         {
-            var requestUrl = string.Format("{0}/{1}", ServiceUrl, Api);            
+            var requestUrl = $"{ServiceUrl}/{Api}";            
             var response = await PutAsync(requestUrl, () => CreateJsonStringContent(dataDocument));
             var responseString = await response.Content.ReadAsStringAsync();
             var dsResponse = response.StatusCode == HttpStatusCode.Created ?
@@ -192,7 +192,7 @@ namespace Geodan.Cloud.Client.DocumentService
         /// <exception cref="JsonSerializationException">Thrown when response could not be parsed</exception>
         public async Task<Response<DataDocument>> CreateNewDocument(DataDocument dataDocument)
         {
-            var requestUrl = string.Format("{0}/{1}", ServiceUrl, Api);
+            var requestUrl = $"{ServiceUrl}/{Api}";
 
             var response = await PostAsync(requestUrl, () => CreateJsonStringContent(dataDocument));
             var responseString = await response.Content.ReadAsStringAsync();
@@ -220,7 +220,7 @@ namespace Geodan.Cloud.Client.DocumentService
         /// <returns></returns>
         public async Task<Response<DataDocument>> CreateNewDocument(DataDocument dataDocument, MultipartFile file)
         {
-            var requestUrl = string.Format("{0}/{1}", ServiceUrl, Api);
+            var requestUrl = $"{ServiceUrl}/{Api}";
             var response = await PostAsync(requestUrl, () => CreateMultipartContent(dataDocument, file));
             var responseString = await response.Content.ReadAsStringAsync();
 
@@ -249,7 +249,7 @@ namespace Geodan.Cloud.Client.DocumentService
         /// <returns>Response of type bool</returns>
         public async Task<Response<bool>> DeleteDocument(DataDocument dataDocument)
         {
-            var requestUrl = string.Format("{0}/{1}", ServiceUrl, Api);
+            var requestUrl = $"{ServiceUrl}/{Api}";
             var response = await DeleteAsync(requestUrl, () => CreateJsonStringContent(dataDocument));
             var responseString = await response.Content.ReadAsStringAsync();
 
@@ -267,7 +267,7 @@ namespace Geodan.Cloud.Client.DocumentService
         /// <returns>Response of type bool</returns>
         public async Task<Response<bool>> DeleteDocument(string account, string service, string name)
         {
-            var requestUrl = string.Format("{0}/{1}/{2}/{3}/{4}", ServiceUrl, Api, account, service, name);
+            var requestUrl = $"{ServiceUrl}/{Api}/{account}/{service}/{name}";
             var response = await DeleteAsync(requestUrl);
             var responseString = await response.Content.ReadAsStringAsync();
             return response.StatusCode == HttpStatusCode.NoContent ?
