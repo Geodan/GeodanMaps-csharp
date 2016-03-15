@@ -41,7 +41,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeoQuester.cs" />
+    <Compile Include="Geoquest.cs" />
     <Compile Include="IntersectOutputProperties.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Models\Configuration.cs" />

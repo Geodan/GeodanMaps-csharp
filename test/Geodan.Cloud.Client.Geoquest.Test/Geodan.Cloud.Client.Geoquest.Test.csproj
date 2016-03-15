@@ -39,13 +39,17 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Geoquest.test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WhoAmI.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Geodan.Cloud.Client.Core\Geodan.Cloud.Client.Core.csproj">
       <Project>{d2a418f6-ace9-4237-a19d-6dfc29cff47f}</Project>
       <Name>Geodan.Cloud.Client.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Geodan.Cloud.Client.Geoquest\Geodan.Cloud.Client.Geoquest.csproj">
+      <Project>{5aa36ca5-7630-44c3-824b-cbebcfa1c044}</Project>
+      <Name>Geodan.Cloud.Client.Geoquest</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
