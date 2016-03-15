@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WhoAmI.cs" />
+    <Compile Include="WhoAmI.test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Geodan.Cloud.Client.Core\Geodan.Cloud.Client.Core.csproj">

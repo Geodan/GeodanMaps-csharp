@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Geodan.Cloud.Client.Test
 {
     [TestFixture]
-    public class TestClass
+    public class RoutingTest
     {
         [Test]
         public void TestMethod()

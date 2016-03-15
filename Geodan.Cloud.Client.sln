@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9B887077-4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geodan.Cloud.Client.WhoAmI.Test", "test\Geodan.Cloud.Client.WhoAmI.test\Geodan.Cloud.Client.WhoAmI.Test.csproj", "{8CE78E6E-CB11-4EE3-84D4-FD9F0DE0AB04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geodan.Cloud.Client.Routing", "src\Geodan.Cloud.Client.Routing\Geodan.Cloud.Client.Routing\Geodan.Cloud.Client.Routing.csproj", "{74C71293-239E-4531-B1ED-331451734D19}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geodan.Cloud.Client.Geoquest", "src\Geodan.Cloud.Client.Geoquest\Geodan.Cloud.Client.Geoquest.csproj", "{5AA36CA5-7630-44C3-824B-CBEBCFA1C044}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geodan.Cloud.Client.Routing.Test", "test\Geodan.Cloud.Client.Routing.Test\Geodan.Cloud.Client.Routing.Test.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geodan.Cloud.Client.Geoquest.Test", "test\Geodan.Cloud.Client.Geoquest.Test\Geodan.Cloud.Client.Geoquest.Test.csproj", "{D16D0C9B-D769-464F-BA52-FD17CD12A8EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geodan.Cloud.Client.Routing", "src\Geodan.Cloud.Client.Routing\Geodan.Cloud.Client.Routing.csproj", "{74C71293-239E-4531-B1ED-331451734D19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,6 @@ Global
 		{8CE78E6E-CB11-4EE3-84D4-FD9F0DE0AB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CE78E6E-CB11-4EE3-84D4-FD9F0DE0AB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CE78E6E-CB11-4EE3-84D4-FD9F0DE0AB04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74C71293-239E-4531-B1ED-331451734D19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74C71293-239E-4531-B1ED-331451734D19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74C71293-239E-4531-B1ED-331451734D19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74C71293-239E-4531-B1ED-331451734D19}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5AA36CA5-7630-44C3-824B-CBEBCFA1C044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5AA36CA5-7630-44C3-824B-CBEBCFA1C044}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AA36CA5-7630-44C3-824B-CBEBCFA1C044}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,6 +49,10 @@ Global
 		{D16D0C9B-D769-464F-BA52-FD17CD12A8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D16D0C9B-D769-464F-BA52-FD17CD12A8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D16D0C9B-D769-464F-BA52-FD17CD12A8EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74C71293-239E-4531-B1ED-331451734D19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74C71293-239E-4531-B1ED-331451734D19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74C71293-239E-4531-B1ED-331451734D19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74C71293-239E-4531-B1ED-331451734D19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

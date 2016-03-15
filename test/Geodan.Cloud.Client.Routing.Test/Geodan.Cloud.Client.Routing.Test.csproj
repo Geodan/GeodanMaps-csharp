@@ -38,7 +38,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestClass.cs" />
+    <Compile Include="Routing.test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -46,7 +46,7 @@
       <Project>{d2a418f6-ace9-4237-a19d-6dfc29cff47f}</Project>
       <Name>Geodan.Cloud.Client.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Geodan.Cloud.Client.Routing\Geodan.Cloud.Client.Routing\Geodan.Cloud.Client.Routing.csproj">
+    <ProjectReference Include="..\..\src\Geodan.Cloud.Client.Routing\Geodan.Cloud.Client.Routing.csproj">
       <Project>{74c71293-239e-4531-b1ed-331451734d19}</Project>
       <Name>Geodan.Cloud.Client.Routing</Name>
     </ProjectReference>

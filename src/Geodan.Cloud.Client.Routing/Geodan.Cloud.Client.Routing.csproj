@@ -43,7 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Geodan.Cloud.Client.Core\Geodan.Cloud.Client.Core.csproj">
+    <ProjectReference Include="..\Geodan.Cloud.Client.Core\Geodan.Cloud.Client.Core.csproj">
       <Project>{d2a418f6-ace9-4237-a19d-6dfc29cff47f}</Project>
       <Name>Geodan.Cloud.Client.Core</Name>
     </ProjectReference>

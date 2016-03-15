@@ -3,7 +3,7 @@
 namespace Geodan.Cloud.Client.WhoAmI.test
 {
     [TestFixture]
-    public class WhoAmI
+    public class WhoAmITest
     {
         [Test]
         public static void TellMe()

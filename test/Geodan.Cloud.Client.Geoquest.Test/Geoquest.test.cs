@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Geodan.Cloud.Client.GeoQuester.test
 {
     [TestFixture]
-    public class GeoQuesterTest
+    public class GeoquestTest
     {
         private const string Organisation = "GEOD8602XXXX";
         private const string Serviceurl = "http://acc.geodan.nl/public/beta/geoquest";
