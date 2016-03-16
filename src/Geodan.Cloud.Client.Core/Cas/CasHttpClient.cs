@@ -478,25 +478,25 @@ namespace Geodan.Cloud.Client.Core.Cas
 
         #region WrappersPostAsync
 
-        [Obsolete("Use PutAsync(string, Func<HttpContent>) instead", true)]
+        [Obsolete("Use PostAsync(string, Func<HttpContent>) instead", true)]
         public new Task<HttpResponseMessage> PostAsync(string requestUri, HttpContent content)
         {
             throw new NotImplementedException("Obsolete");
         }
 
-        [Obsolete("Use PutAsync(string, Func<HttpContent>, CancellationToken) instead", true)]
+        [Obsolete("Use PostAsync(string, Func<HttpContent>, CancellationToken) instead", true)]
         public new Task<HttpResponseMessage> PostAsync(string requestUri, HttpContent content, CancellationToken cancellationToken)
         {
             throw new NotImplementedException("Obsolete");
         }
 
-        [Obsolete("Use PutAsync(Uri, Func<HttpContent>) instead", true)]
+        [Obsolete("Use PostAsync(Uri, Func<HttpContent>) instead", true)]
         public new Task<HttpResponseMessage> PostAsync(Uri requestUri, HttpContent content)
         {
             throw new NotImplementedException("Obsolete");
         }
 
-        [Obsolete("Use PutAsync(Uri, Func<HttpContent>, CancellationToken) instead", true)]
+        [Obsolete("Use PostAsync(Uri, Func<HttpContent>, CancellationToken) instead", true)]
         public new Task<HttpResponseMessage> PostAsync(Uri requestUri, HttpContent content, CancellationToken cancellationToken)
         {
             throw new NotImplementedException("Obsolete");

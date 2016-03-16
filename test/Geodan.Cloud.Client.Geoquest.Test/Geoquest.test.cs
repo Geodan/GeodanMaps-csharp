@@ -14,7 +14,7 @@ namespace Geodan.Cloud.Client.GeoQuester.test
         [Test]
         public static void IntersectTest()
         {
-            var geoQuester = new GeoQuester(Serviceurl, ServiceKey);
+            var geoQuester = new Api(Serviceurl, ServiceKey);
             const string location2 = "{\"type\": \"Point\",\"coordinates\": [150243.3280, 451319.6505]}";
             const string location1 = "{\"type\": \"Polygon\",\"coordinates\": [[ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0],[100.0, 1.0], [100.0, 0.0] ]]}";
 
@@ -28,7 +28,7 @@ namespace Geodan.Cloud.Client.GeoQuester.test
         [Test]
         public static void GetAllConfigurations()
         {                         
-            var geoQuester = new GeoQuester(Serviceurl, "");
+            var geoQuester = new Api(Serviceurl, "");
             var response = geoQuester.GetConfigurations(Organisation).Result;
             Assert.AreEqual(response.HttpStatusCode, HttpStatusCode.OK);                                            
         }

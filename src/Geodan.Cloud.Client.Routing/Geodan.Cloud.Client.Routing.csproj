@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{74C71293-239E-4531-B1ED-331451734D19}</ProjectGuid>
@@ -13,9 +13,8 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,14 +38,35 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Routing.cs" />
+    <Compile Include="Api.cs" />
+    <Compile Include="Models\DistanceUnit.cs" />
+    <Compile Include="Models\IndexCost.cs" />
+    <Compile Include="Models\Route.cs" />
+    <Compile Include="Models\RoutingFeature.cs" />
+    <Compile Include="Models\RoutingFeatureCollection.cs" />
+    <Compile Include="Models\TimeUnit.cs" />
+    <Compile Include="Models\TspResponse.cs" />
+    <Compile Include="RequestParams\BatchLocation.cs" />
+    <Compile Include="RequestParams\CalcMode.cs" />
+    <Compile Include="Extensions\UnitFormatTypeExtensions.cs" />
+    <Compile Include="RequestParams\NetworkType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestParams\RouteReturnType.cs" />
+    <Compile Include="RequestParams\TspLocation.cs" />
+    <Compile Include="RequestParams\TspMode.cs" />
+    <Compile Include="RequestParams\UnitFormatType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Geodan.Cloud.Client.Core\Geodan.Cloud.Client.Core.csproj">
       <Project>{d2a418f6-ace9-4237-a19d-6dfc29cff47f}</Project>
       <Name>Geodan.Cloud.Client.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="System.EnterpriseServices">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.EnterpriseServices.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

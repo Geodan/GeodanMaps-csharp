@@ -5,19 +5,18 @@ using Geodan.Cloud.Client.Core.Models;
 using Geodan.Cloud.Client.GeoQuester.Models;
 using Newtonsoft.Json;
 using System.Net.Http;
-using System.Net.Http.Headers;
 
 namespace Geodan.Cloud.Client.GeoQuester
 {
     /// <summary>
-    /// Supports GeoQuester 1.0
+    /// Supports Service 1.0
     /// </summary>
-    public class GeoQuester : HttpClient
+    public class Api : HttpClient
     {
         private string ServiceUrl { get; }
         private string ServiceKey { get; }
 
-        public GeoQuester(string serviceUrl, string serviceKey)
+        public Api(string serviceUrl, string serviceKey)
         {
             ServiceUrl = serviceUrl[serviceUrl.Length - 1].Equals('/') ? serviceUrl.Substring(0, serviceUrl.Length - 1) : serviceUrl;
             ServiceKey = serviceKey;

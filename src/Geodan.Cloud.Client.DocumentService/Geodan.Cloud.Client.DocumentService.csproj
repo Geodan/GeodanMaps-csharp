@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DocumentService.cs" />
+    <Compile Include="Api.cs" />
     <Compile Include="Models\DataDocument.cs" />
     <Compile Include="Models\MainAttributes.cs" />
     <Compile Include="Models\MultipartFile.cs" />

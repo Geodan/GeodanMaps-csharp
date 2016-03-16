@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Geodan.Cloud.Client.GeoQuester")]
+[assembly: AssemblyTitle("Geodan.Cloud.Client.Service")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Geodan")]
-[assembly: AssemblyProduct("Geodan.Cloud.Client.GeoQuester")]
+[assembly: AssemblyProduct("Geodan.Cloud.Client.Service")]
 [assembly: AssemblyCopyright("Copyright © Geodan 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
