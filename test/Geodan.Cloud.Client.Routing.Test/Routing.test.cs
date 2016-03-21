@@ -8,15 +8,13 @@ namespace Geodan.Cloud.Client.Test
     [TestFixture]
     public class RoutingTest
     {
-        private const string Username = "";
-        private const string Password = "";
-        private const string ServiceUrl = "";
-        private const string TicketServiceUrl = "";
+        private const string ApiKey = "";
+        private const string ServiceUrl = "http://services.geodan.nl/routing";
 
         [Test]
         public void TestRoute()
         {
-            var routingApi = new Routing.Api(Username, Password, TicketServiceUrl, ServiceUrl);
+            var routingApi = new Routing.Api(ServiceUrl, ApiKey);
 
             //Route with all default parameters
             var route = routingApi.GetRoute(4.91311, 52.34232, 5.29969 , 51.69176).Result;
@@ -39,7 +37,7 @@ namespace Geodan.Cloud.Client.Test
         [Test]
         public void TestRouteBatch()
         {
-            var routingApi = new Routing.Api(Username, Password, TicketServiceUrl, ServiceUrl);
+            var routingApi = new Routing.Api(ServiceUrl, ApiKey);
             var batch = new List<BatchLocation>
             {
                 new BatchLocation {FromCoordX = 4.91311, FromCoordY = 52.34232, ToCoordX = 5.29969, ToCoordY = 51.69176},
@@ -56,7 +54,7 @@ namespace Geodan.Cloud.Client.Test
         [Test]
         public void TestTsp()
         {
-            var routingApi = new Routing.Api(Username, Password, TicketServiceUrl, ServiceUrl);
+            var routingApi = new Routing.Api(ServiceUrl, ApiKey);
             var batch = new List<TspLocation>
             {
                 new TspLocation {CoordX = 4.906, CoordY = 52.386},

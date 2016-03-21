@@ -14,12 +14,12 @@ namespace Geodan.Cloud.Client.GeoQuester
     public class Api : HttpClient
     {
         private string ServiceUrl { get; }
-        private string ServiceKey { get; }
+        private string ApiKey { get; }
 
-        public Api(string serviceUrl, string serviceKey)
+        public Api(string serviceUrl, string apiKey)
         {
             ServiceUrl = serviceUrl[serviceUrl.Length - 1].Equals('/') ? serviceUrl.Substring(0, serviceUrl.Length - 1) : serviceUrl;
-            ServiceKey = serviceKey;
+            ApiKey = apiKey;
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace Geodan.Cloud.Client.GeoQuester
 
         private string AppendServiceKey(string url)
         {
-            return url.Contains("?") ? $"{url}&servicekey={ServiceKey}" : $"{url}?servicekey={ServiceKey}";
+            return url.Contains("?") ? $"{url}&apikey={ApiKey}" : $"{url}?apikey={ApiKey}";
         }
     }
 }

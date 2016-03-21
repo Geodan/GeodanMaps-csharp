@@ -4,7 +4,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Geodan.Cloud.Client.Core.Cas;
 using Geodan.Cloud.Client.Core.Models;
 using Geodan.Cloud.Client.Routing.Extensions;
 using Geodan.Cloud.Client.Routing.Models;
@@ -13,15 +12,20 @@ using Newtonsoft.Json;
 
 namespace Geodan.Cloud.Client.Routing
 {
-    public class Api : CasHttpClient
+    public class Api : HttpClient
     {
         public string TspEndpoint { get; set; }         = "tsp";
         public string RouteEndpoint { get; set; }       = "route";
         public string IsochroneEndpoint { get; set; }   = "isochrone";
         public string BatchRouteEndpoint { get; set; }  = "batchroute";
-        
-        public Api(string username, string password, string casTicketServiceUrl, string serviceUrl, bool modAuthCas = true) :
-            base(username, password, casTicketServiceUrl, serviceUrl, modAuthCas){}
+        public string ApiKey { get; set; }
+        public string ServiceUrl { get; set; }
+
+        public Api(string serviceUrl, string apiKey)
+        {
+            ServiceUrl = serviceUrl;
+            ApiKey = apiKey;
+        }
 
         /// <summary>
         /// Calculate a route
@@ -51,6 +55,7 @@ namespace Geodan.Cloud.Client.Routing
                              $"returntype={returnType}&" +
                              $"format={format.GetValue()}&" +
                              $"outputformat=json";
+            AppendServiceKey(ref requestUrl);
 
             var response = await GetAsync(requestUrl);
             var responseString = await response.Content.ReadAsStringAsync();
@@ -90,8 +95,9 @@ namespace Geodan.Cloud.Client.Routing
                              $"returntype={returnType}&" +
                              $"format={format.GetValue()}&" +
                              $"outputformat=json";
-           
-            var response = await PostAsync(requestUrl, () => CreateRouteLocationsStringContent(batchLocations));
+            AppendServiceKey(ref requestUrl);
+
+            var response = await PostAsync(requestUrl, CreateRouteLocationsStringContent(batchLocations));
             var responseString = await response.Content.ReadAsStringAsync();
             Response<Route> batchResponse;
 
@@ -135,8 +141,9 @@ namespace Geodan.Cloud.Client.Routing
                              $"srs={srs}";
             
             requestUrl = identifier.HasValue ? $"{requestUrl}&Identifier={identifier.Value}" : $"{requestUrl}&Identifier=1";
+            AppendServiceKey(ref requestUrl);
 
-            var response = await PostAsync(requestUrl, () => CreateTspLocationsStringContent(tspLocations));
+            var response = await PostAsync(requestUrl, CreateTspLocationsStringContent(tspLocations));
             var responseString = await response.Content.ReadAsStringAsync();
             var tspResponse = response.StatusCode == HttpStatusCode.OK ? Response<TspResponse>.CreateSuccessful(JsonConvert.DeserializeObject<TspResponse>(responseString), response.StatusCode) : 
                 Response<TspResponse>.CreateUnsuccessful(responseString, response.StatusCode);
@@ -152,6 +159,11 @@ namespace Geodan.Cloud.Client.Routing
         private static StringContent CreateTspLocationsStringContent(List<TspLocation> tspLocations)
         {
             return new StringContent(JsonConvert.SerializeObject(tspLocations), Encoding.UTF8, "application/json");
+        }
+
+        private void AppendServiceKey(ref string url)
+        {
+            url = url.Contains("?") ? $"{url}&apikey={ApiKey}" : $"{url}?apikey={ApiKey}";
         }
     }
 }
