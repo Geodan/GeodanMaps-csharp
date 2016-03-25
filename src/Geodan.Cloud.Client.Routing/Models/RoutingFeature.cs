@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using GeoJSON.Net;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using GeoJSON.Net.Feature;
 using GeoJSON.Net.Geometry;
 using Newtonsoft.Json;
@@ -29,7 +26,7 @@ namespace Geodan.Cloud.Client.Routing.Models
                 return false;
             }
 
-            distance = (double)Properties["distance"];
+            distance = double.Parse(Properties["distance"].ToString(), CultureInfo.InvariantCulture);
 
             return true;
         }
@@ -42,7 +39,7 @@ namespace Geodan.Cloud.Client.Routing.Models
                 return false;
             }
 
-            duration = (double)Properties["duration"];
+            duration = double.Parse(Properties["duration"].ToString(), CultureInfo.InvariantCulture);
 
             return true;
         }

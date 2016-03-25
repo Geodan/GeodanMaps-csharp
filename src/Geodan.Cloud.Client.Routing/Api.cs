@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -13,7 +14,7 @@ using Newtonsoft.Json;
 namespace Geodan.Cloud.Client.Routing
 {
     public class Api : HttpClient
-    {
+    {       
         public string TspEndpoint { get; set; }         = "tsp";
         public string RouteEndpoint { get; set; }       = "route";
         public string IsochroneEndpoint { get; set; }   = "isochrone";
@@ -24,7 +25,7 @@ namespace Geodan.Cloud.Client.Routing
         public Api(string serviceUrl, string apiKey)
         {
             ServiceUrl = serviceUrl;
-            ApiKey = apiKey;
+            ApiKey = apiKey;            
         }
 
         /// <summary>
